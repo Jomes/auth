@@ -1,0 +1,49 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.wx.auth";
+option java_outer_classname = "AuthServiceProto";
+option objc_class_prefix = "HLW";
+
+package AuthService;
+
+service AuthService {
+    rpc Login (LoginRequest) returns (UserInfo) {}
+    rpc register (RegRequest) returns (UserInfo) {}
+}
+
+message CommRequest {
+    string time = 1;
+    string sign = 2;
+    string deviceid = 3;
+}
+
+message LoginRequest {
+    CommRequest  comm = 1;
+    string phone = 2;
+    int32 verifycode = 3;
+}
+
+message RegRequest {
+    CommRequest  comm =1;
+    string phone = 2;
+    int32 verifycode = 3;
+    string name = 4;
+    string pw = 5;
+    string repw = 6;
+}
+
+message UserInfo {
+    int32 id = 1;
+    string name = 2;
+    string phone = 3;
+    string alias = 4;
+    string sex = 5;
+    CommomReply common = 6;
+}
+
+message CommomReply {
+    string token = 1;
+    string time = 2;
+    string sign = 3;
+    int32 type = 4;
+}

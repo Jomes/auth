@@ -11,6 +11,7 @@ local_repository(
     path = "..",
 )
 
+
 load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_repositories")
 
 grpc_java_repositories()
